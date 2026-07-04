@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InterviewAce - Mock Interview</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f7fc;
+    margin:0;
+}
+
+header{
+    background:#1E3A8A;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.container{
+    max-width:800px;
+    margin:40px auto;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.question-number{
+    color:#1E3A8A;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.question{
+    font-size:24px;
+    margin-bottom:30px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+button{
+    padding:12px 20px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.primary{
+    background:#22D3EE;
+    color:white;
+}
+
+.secondary{
+    background:#1E3A8A;
+    color:white;
+}
+
+.recording-status{
+    margin-top:20px;
+    font-weight:bold;
+    color:green;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>🎤 InterviewAce Mock Interview</h1>
+</header>
+
+<div class="container">
+
+    <div class="question-number" id="qNo">
+        Question 1 of 12
+    </div>
+
+    <div class="question" id="question">
+        Tell me about yourself.
+    </div>
+
+    <div class="buttons">
+        <button class="primary" onclick="startRecording()">
+            🎙 Start Recording
+        </button>
+
+        <button class="primary" onclick="stopRecording()">
+            ⏹ Stop Recording
+        </button>
+
+        <button class="secondary" onclick="previousQuestion()">
+            ⬅ Previous
+        </button>
+
+        <button class="secondary" onclick="nextQuestion()">
+            Next ➡
+        </button>
+    </div>
+
+    <div class="recording-status" id="status">
+        Ready
+    </div>
+
+</div>
+
+<script>
+
+const questions = [
+"Tell me about yourself.",
+"What are your strengths?",
+"What are your weaknesses?",
+"Why should we hire you?",
+"Where do you see yourself in 5 years?",
+"What is Object-Oriented Programming?",
+"Explain Cloud Computing.",
+"What is a Database?",
+"What is AWS?",
+"Describe a challenging project you worked on.",
+"How do you handle pressure?",
+"Do you have any questions for us?"
+];
+
+let currentQuestion = 0;
+
+function showQuestion(){
+    document.getElementById("question").innerText =
+        questions[currentQuestion];
+
+    document.getElementById("qNo").innerText =
+        `Question ${currentQuestion + 1} of ${questions.length}`;
+}
+
+function nextQuestion(){
+    if(currentQuestion < questions.length - 1){
+        currentQuestion++;
+        showQuestion();
+    }else{
+        alert("Interview Completed! 🎉");
+    }
+}
+
+function previousQuestion(){
+    if(currentQuestion > 0){
+        currentQuestion--;
+        showQuestion();
+    }
+}
+
+function startRecording(){
+    document.getElementById("status").innerText =
+    "🎙 Recording Started...";
+}
+
+function stopRecording(){
+    document.getElementById("status").innerText =
+    "⏹ Recording Stopped";
+}
+
+showQuestion();
+
+</script>
+
+</body>
+</html>
